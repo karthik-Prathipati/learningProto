@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package learningProto;
+
+option go_package="proto/numanipb";
+
+message Numbers {
+    int64 a = 1;
+    int64 b = 2;
+}
+
+message Number {
+    int64 a = 1;
+}
+
+service NumberManipulation {
+    rpc Add (Numbers) returns (Number);
+    rpc PrimeNumbers (Number) returns (stream Number);
+    rpc ComputeAverage (stream Number) returns (Number);
+    rpc FindMaxNumber (stream Number) returns (stream Number);
+}
