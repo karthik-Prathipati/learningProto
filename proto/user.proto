@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package learningProto;
 
-option go_package="proto/numanipb";
+option go_package="proto/protopb";
 
 message Numbers {
     int64 a = 1;

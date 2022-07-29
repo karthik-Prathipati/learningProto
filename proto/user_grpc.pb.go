@@ -4,7 +4,7 @@
 // - protoc             v3.21.4
 // source: proto/user.proto
 
-package numanipb
+package protopb
 
 import (
 	context "context"

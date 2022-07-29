@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/karthik-Prathipati/learningProto/proto/numanipb"
+	"github.com/karthik-Prathipati/learningProto/proto/protopb"
 )
 
 type server struct {
-	numanipb.UnimplementedNumberManipulationServer
+	protopb.UnimplementedNumberManipulationServer
 }
