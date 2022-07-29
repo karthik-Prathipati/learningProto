@@ -4,7 +4,7 @@
 // - protoc             v3.21.4
 // source: proto/user.proto
 
-package protopb
+package proto
 
 import (
 	context "context"
@@ -38,7 +38,7 @@ func NewNumberManipulationClient(cc grpc.ClientConnInterface) NumberManipulation
 
 func (c *numberManipulationClient) Add(ctx context.Context, in *Numbers, opts ...grpc.CallOption) (*Number, error) {
 	out := new(Number)
-	err := c.cc.Invoke(ctx, "/learningProto.NumberManipulation/Add", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.NumberManipulation/Add", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *numberManipulationClient) Add(ctx context.Context, in *Numbers, opts ..
 }
 
 func (c *numberManipulationClient) PrimeNumbers(ctx context.Context, in *Number, opts ...grpc.CallOption) (NumberManipulation_PrimeNumbersClient, error) {
-	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[0], "/learningProto.NumberManipulation/PrimeNumbers", opts...)
+	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[0], "/proto.NumberManipulation/PrimeNumbers", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +78,7 @@ func (x *numberManipulationPrimeNumbersClient) Recv() (*Number, error) {
 }
 
 func (c *numberManipulationClient) ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (NumberManipulation_ComputeAverageClient, error) {
-	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[1], "/learningProto.NumberManipulation/ComputeAverage", opts...)
+	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[1], "/proto.NumberManipulation/ComputeAverage", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +112,7 @@ func (x *numberManipulationComputeAverageClient) CloseAndRecv() (*Number, error)
 }
 
 func (c *numberManipulationClient) FindMaxNumber(ctx context.Context, opts ...grpc.CallOption) (NumberManipulation_FindMaxNumberClient, error) {
-	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[2], "/learningProto.NumberManipulation/FindMaxNumber", opts...)
+	stream, err := c.cc.NewStream(ctx, &NumberManipulation_ServiceDesc.Streams[2], "/proto.NumberManipulation/FindMaxNumber", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -192,7 +192,7 @@ func _NumberManipulation_Add_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/learningProto.NumberManipulation/Add",
+		FullMethod: "/proto.NumberManipulation/Add",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NumberManipulationServer).Add(ctx, req.(*Numbers))
@@ -277,7 +277,7 @@ func (x *numberManipulationFindMaxNumberServer) Recv() (*Number, error) {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var NumberManipulation_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "learningProto.NumberManipulation",
+	ServiceName: "proto.NumberManipulation",
 	HandlerType: (*NumberManipulationServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

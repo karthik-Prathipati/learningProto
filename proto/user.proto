@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package learningProto;
+package proto;
 
-option go_package="proto/protopb";
+option go_package="proto/proto";
 
 message Numbers {
     int64 a = 1;
