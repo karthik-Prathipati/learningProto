@@ -4,9 +4,12 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log"
 	"math"
+	"net"
 
 	"github.com/karthik-Prathipati/learningProto/proto"
+	"google.golang.org/grpc"
 )
 
 type server struct {
@@ -104,4 +107,21 @@ func (*server) FindMaxNumber(resp proto.NumberManipulation_FindMaxNumberServer) 
 		}
 
 	}
+}
+
+func main() {
+	fmt.Println("main server is about to start now ")
+	listen, err := net.Listen("tcp", ":8080")
+
+	if err != nil {
+		log.Fatal("Error while starting the server")
+	}
+	s := grpc.NewServer()
+
+	proto.RegisterNumberManipulationServer(s, &server{})
+
+	if err = s.Serve(listen); err != nil {
+		log.Fatal("error at listening to the server")
+	}
+
 }
